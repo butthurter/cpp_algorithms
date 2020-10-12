@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-void swap(int* mas, int a, int b ) {
-    int mesto = mas[a];
-    mas[a] = mas[b];
-    mas[b] = mesto;
+void swapInt(int* array, int a, int b ) {
+    int tmp = array[a];
+    array[a] = array[b];
+    array[b] = tmp;
 }
 
-void shaker(int* mas, int size) {
+void shaker(int* array, int size) {
     int left = 0;
     int right = size;
 
@@ -16,8 +16,9 @@ void shaker(int* mas, int size) {
             if (i + 1 >= size) {
                 break;
             }
-            if (mas[i + 1] < mas[i])
-                swap(mas, i, i + 1);
+            if (array[i + 1] < array[i]) {
+                swapInt(array, i, i + 1);
+            }
         }
         right--;
 
@@ -25,8 +26,9 @@ void shaker(int* mas, int size) {
             if (i - 1 < 0) {
                 break;
             }
-            if (mas[i - 1] > mas[i])
-                swap(mas, i, i - 1);
+            if (array[i - 1] > array[i]) {
+                swapInt(array, i, i - 1);
+            }
         }
         left++;
     }
@@ -35,16 +37,18 @@ void shaker(int* mas, int size) {
 int main() {
     const int size = 10;
 
-    int mas[size];
-    for (int s = 0; s < size; s++) {
-        cin >> mas[s];
+    int array[size];
+    for (int & ma : array) {
+        cin >> ma;
     }
 
-    shaker(mas, size);
+    shaker(array, size);
 
-    for (int k = 0; k < size; k++) {
-        cout << mas[k] << " ";
+    for (int ma : array) {
+        cout << ma << " ";
     }
+
+    delete[] & array;
 
     return 0;
 }
