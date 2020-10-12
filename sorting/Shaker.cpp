@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-void swapInt(int* array, int a, int b ) {
-    int tmp = array[a];
-    array[a] = array[b];
-    array[b] = tmp;
+void swapInt(int* array, int first, int second) {
+    int tmp = array[first];
+    array[first] = array[second];
+    array[second] = tmp;
 }
 
 void shaker(int* array, int size) {
